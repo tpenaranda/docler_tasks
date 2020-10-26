@@ -30,7 +30,7 @@ const App = ({ history, location }) => {
     if (state.connected) {
       pusherAction('ping')
     }
-  }, [state.connected])
+  }, [state.connected, pusherAction])
 
   useEffect(() => {
     const savedClientId = localStorage.getItem('docler-client-id')
