@@ -78,7 +78,7 @@ const App = ({ history, location }) => {
   }
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-600">
+    <div className="flex min-h-screen items-center justify-center bg-gray-600">
       <div className="shadow overflow-hidden rounded-md w-full max-w-xl m-2">
         <div className="flex items-center justify-between px-4 pt-5 pb-3 border-b border-gray-600 sm:px-6 bg-white">
           <div>
