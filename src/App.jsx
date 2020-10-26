@@ -117,7 +117,7 @@ const App = ({ history, location }) => {
             <input onKeyPress={handleInputKeyPress} onChange={handleInputChange} value={input.value} className={clsx('w-full appearance-none block bg-gray-200 text-gray-700 border rounded py-2 px-4 mx-1 sm:mx-2 focus:outline-none focus:bg-white', input.error && 'border-red-500')} id="new-task-input" type="text" placeholder="My new task..." />
             <button onClick={handleAdd} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 sm:px-6 mx-1 sm:mx-2 rounded">Add</button>
           </div>
-          { input.error && <p className="text-red-500 px-2 text-xs italic">Please verify input value.</p> }
+          { input.error && <p className="text-red-500 px-2 sm:px-4 text-xs italic">Please verify input value.</p> }
         </div>
 
 
