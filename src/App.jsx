@@ -95,7 +95,7 @@ const App = ({ history, location }) => {
           <dl>
             { state.tasks.map(task => (
               <div key={task.id} className={clsx('flex border-b border-gray-300 py-4 px-8 justify-between items-center', task.id % 2 ? 'bg-gray-100' : 'bg-gray-200')}>
-                <dt className="leading-5 font-medium text-black capitalize break-anywhere pr-2 sm:pr-4">
+                <dt className="leading-5 font-medium text-black capitalize break-all pr-2 sm:pr-4">
                   { task.name }
                 </dt>
                 <dd className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
