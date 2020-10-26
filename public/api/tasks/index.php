@@ -4,7 +4,7 @@ use Predis\Client as RedisCient;
 use Predis\Connection\ConnectionException;
 use Pusher\Pusher;
 
-require __DIR__ . './../../vendor/autoload.php';
+require __DIR__ . './../../../vendor/autoload.php';
 
 header('Content-Type: application/json');
 $postData = json_decode(file_get_contents('php://input'), true);
