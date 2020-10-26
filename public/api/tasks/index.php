@@ -24,7 +24,7 @@ if (empty($postData['client_id'])) {
 
 $action = $_GET['action'] ?? 'none';
 $clientName = "docler-client-{$postData['client_id']}";
-$clientData = unserialize($redis->get($clientName) ?? 'a:0:{}');
+$clientData = unserialize($redis->get($clientName) ?? 'a:1:{s:5:"tasks";a:0:{}}');
 
 if ($action === 'clear_completed') {
     $clientData['tasks'] = array_values(array_filter($clientData['tasks'], function ($i) {

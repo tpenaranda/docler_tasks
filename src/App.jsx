@@ -18,7 +18,7 @@ const App = ({ history, location }) => {
     const body = JSON.stringify({ ...data, client_id: clientId })
     setInput(state => ({ ...state, value: '' }))
 
-    return fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/tasks?action=${action}`, { method: 'POST', body }).then((r) => {
+    return fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/tasks/?action=${action}`, { method: 'POST', body }).then((r) => {
       if (r.status !== 200) {
         return Promise.reject(r)
       }
