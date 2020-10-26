@@ -1,0 +1,15 @@
+{
+    "name": "tpenaranda/docler_task",
+    "type": "project",
+    "description": "As a user, I want to have an ability to see a list of tasks for my day, so that I can do them one by one",
+    "keywords": [
+        "docler",
+        "tasks"
+    ],
+    "license": "UNLICENSED",
+    "require": {
+        "php": "^7.2",
+        "pusher/pusher-php-server": "^4.1",
+        "predis/predis": "^1.1"
+    }
+}
