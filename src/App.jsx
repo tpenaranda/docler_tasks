@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import clsx from 'clsx'
 import { subscribe, unsubscribe } from 'pusher-redux'
 import { useParams } from "react-router-dom"
@@ -14,7 +14,7 @@ const App = ({ history, location }) => {
     error: false,
   })
 
-  const pusherAction = (action, data = {}) => {
+  const pusherAction = useCallback((action, data = {}) => {
     const body = JSON.stringify({ ...data, client_id: clientId })
     setInput(state => ({ ...state, value: '' }))
 
@@ -24,7 +24,7 @@ const App = ({ history, location }) => {
       }
       return r.json()
     })
-  }
+  }, [])
 
   useEffect(() => {
     if (state.connected) {
