@@ -16,7 +16,7 @@ const App = ({ history, location }) => {
 
   const pusherAction = useCallback((action, data = {}) => {
     const body = JSON.stringify({ ...data, client_id: clientId })
-    setInput(state => ({ ...state, value: '' }))
+    setInput(state => ({ ...state, error: false, value: '' }))
 
     return fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/tasks/?action=${action}`, { method: 'POST', body }).then((r) => {
       if (r.status !== 200) {
@@ -33,23 +33,23 @@ const App = ({ history, location }) => {
   }, [state.connected, pusherAction])
 
   useEffect(() => {
-    const savedClientId = localStorage.getItem('docler-client-id')
-
     if (!clientId) {
+      const savedClientId = localStorage.getItem('docler-client-id')
+
       if (savedClientId) {
         return history.push(savedClientId)
       }
 
-      const clientId = require('random-words')(3).join('-')
-      localStorage.setItem('docler-client-id', clientId)
+      const newClientId = require('random-words')(3).join('-')
+      localStorage.setItem('docler-client-id', newClientId)
 
-      return history.push(clientId)
+      return history.push(newClientId)
     }
 
-    subscribe(`docler-client-${savedClientId}`, 'state-changed', 'STATE_CHANGED', {})
+    subscribe(`docler-client-${clientId}`, 'state-changed', 'STATE_CHANGED', {})
 
     return () => {
-      unsubscribe(`docler-client-${savedClientId}`, 'state-changed', 'STATE_CHANGED', {})
+      unsubscribe(`docler-client-${clientId}`, 'state-changed', 'STATE_CHANGED', {})
     }
   }, [clientId, history])
 
@@ -95,7 +95,7 @@ const App = ({ history, location }) => {
           <dl>
             { state.tasks.map(task => (
               <div key={task.id} className={clsx('flex border-b border-gray-300 py-4 px-8 justify-between items-center', task.id % 2 ? 'bg-gray-100' : 'bg-gray-200')}>
-                <dt className="leading-5 font-medium text-black capitalize">
+                <dt className="leading-5 font-medium text-black capitalize break-anywhere pr-2 sm:pr-4">
                   { task.name }
                 </dt>
                 <dd className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
