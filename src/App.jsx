@@ -24,7 +24,7 @@ const App = ({ history, location }) => {
       }
       return r.json()
     })
-  }, [])
+  }, [clientId])
 
   useEffect(() => {
     if (state.connected) {
